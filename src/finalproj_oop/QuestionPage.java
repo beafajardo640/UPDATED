@@ -1,0 +1,221 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package finalproj_oop;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JLabel;
+
+
+/**
+ *
+ * @author admin
+ */
+public class QuestionPage extends javax.swing.JFrame {
+   
+    private int score = 0;
+    private boolean isHardMode = false;
+    private String[] riddles;
+    private String[][] choices;
+    private String[] answers;
+    
+   private DungeonLVL dungeonPage;
+   private int levelNumber;
+   private int currentQuestion;
+
+public QuestionPage(DungeonLVL dungeonPage, int levelNumber) {
+    
+    // changeIcon
+    ImageIcon icon = new ImageIcon(getClass().getResource("/images/GameIcon.png"));this.setIconImage(icon.getImage());
+    this.setResizable(false);
+    this.setSize(1032,678);
+     
+    
+    this.dungeonPage = dungeonPage;
+    this.levelNumber = levelNumber;
+
+    initComponents();
+    setupQuestions();
+
+    this.currentQuestion = levelNumber - 1; // piliin question base sa level
+    showQuestion();
+ }
+
+    // 🔹 Para piliin kung normal o hard mode at i-setup ang data
+    private void setupQuestions() {
+        isHardMode = false; // or depende sa player choice
+
+        if (isHardMode) {
+            riddles = RiddleData.hardRiddles;
+            choices = RiddleData.hardChoices;
+            answers = RiddleData.hardAnswers;
+        } else {
+            riddles = RiddleData.normalRiddles;
+            choices = RiddleData.normalChoices;
+            answers = RiddleData.normalAnswers;
+        }
+    }
+        @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        questionBORDER = new javax.swing.JLabel();
+        questTITLE = new javax.swing.JLabel();
+        choiceA = new javax.swing.JButton();
+        choiceB = new javax.swing.JButton();
+        choiceC = new javax.swing.JButton();
+        choiceD = new javax.swing.JButton();
+        Qbg = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        questionBORDER.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        questionBORDER.setForeground(new java.awt.Color(255, 255, 255));
+        questionBORDER.setText("   ");
+        questionBORDER.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(158, 101, 21)));
+        getContentPane().add(questionBORDER, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 900, 150));
+
+        questTITLE.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
+        questTITLE.setForeground(new java.awt.Color(255, 192, 0));
+        questTITLE.setText("          QUESTION");
+        getContentPane().add(questTITLE, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 390, 80));
+
+        choiceA.setBackground(new java.awt.Color(93, 58, 33));
+        choiceA.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        choiceA.setForeground(new java.awt.Color(255, 192, 0));
+        choiceA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        choiceA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choiceAActionPerformed(evt);
+            }
+        });
+        getContentPane().add(choiceA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 280, 60));
+
+        choiceB.setBackground(new java.awt.Color(93, 58, 33));
+        choiceB.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        choiceB.setForeground(new java.awt.Color(255, 192, 0));
+        choiceB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        choiceB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choiceBActionPerformed(evt);
+            }
+        });
+        getContentPane().add(choiceB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 280, 60));
+
+        choiceC.setBackground(new java.awt.Color(93, 58, 33));
+        choiceC.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        choiceC.setForeground(new java.awt.Color(255, 192, 0));
+        choiceC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        choiceC.setBorderPainted(false);
+        choiceC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choiceCActionPerformed(evt);
+            }
+        });
+        getContentPane().add(choiceC, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 280, 60));
+
+        choiceD.setBackground(new java.awt.Color(93, 58, 33));
+        choiceD.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        choiceD.setForeground(new java.awt.Color(255, 192, 0));
+        choiceD.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        choiceD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choiceDActionPerformed(evt);
+            }
+        });
+        getContentPane().add(choiceD, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 510, 280, 60));
+
+        Qbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/questBG.png"))); // NOI18N
+        getContentPane().add(Qbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 680));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+          private void showQuestion() {
+        if (currentQuestion < riddles.length) {
+            questionBORDER.setText(riddles[currentQuestion]);
+            choiceA.setText(choices[currentQuestion][0]);
+            choiceB.setText(choices[currentQuestion][1]);
+            choiceC.setText(choices[currentQuestion][2]);
+            choiceD.setText(choices[currentQuestion][3]);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                "🎉 You finished all the riddles!\nScore: " + score + "/" + riddles.length +
+                "\nPrepare to face the dragon!");
+            this.dispose();
+        }
+    }
+
+   private void checkAnswer(String letter) {
+   if (answers[currentQuestion].equalsIgnoreCase(letter)) {
+    score++;
+    //JOptionPane.showMessageDialog(this, "✅ Correct!");
+    dungeonPage.unlockNextLevel(levelNumber + 1);
+    this.dispose();
+    dungeonPage.setVisible(true);
+    } else {
+        JOptionPane.showMessageDialog(this, "❌ Wrong answer! Try again from the dungeon.");
+        
+        // Hindi mag-uunlock, balik lang sa dungeon
+        this.dispose();
+        dungeonPage.setVisible(true);
+    }
+}
+   
+    private void choiceAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choiceAActionPerformed
+            checkAnswer("A");
+
+    }//GEN-LAST:event_choiceAActionPerformed
+
+    private void choiceCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choiceCActionPerformed
+        checkAnswer("C");
+
+    }//GEN-LAST:event_choiceCActionPerformed
+
+    private void choiceDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choiceDActionPerformed
+        checkAnswer("D");
+
+    }//GEN-LAST:event_choiceDActionPerformed
+
+    private void choiceBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choiceBActionPerformed
+        checkAnswer("B");
+
+        
+    }//GEN-LAST:event_choiceBActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+       try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
+            }
+        }
+    } catch (Exception ex) {
+        java.util.logging.Logger.getLogger(QuestionPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+
+    java.awt.EventQueue.invokeLater(new Runnable() {
+         public void run() {
+            new DungeonLVL().setVisible(true);   }
+    });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Qbg;
+    private javax.swing.JButton choiceA;
+    private javax.swing.JButton choiceB;
+    private javax.swing.JButton choiceC;
+    private javax.swing.JButton choiceD;
+    private javax.swing.JLabel questTITLE;
+    private javax.swing.JLabel questionBORDER;
+    // End of variables declaration//GEN-END:variables
+}
